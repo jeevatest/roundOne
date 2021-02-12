@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class righhtAnglePattern {
 
-	public righhtAnglePattern() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -22,31 +18,37 @@ public class righhtAnglePattern {
 		}
 		int middleIndex = length / 2;
 		int count = 0;
-		char a,b = 0;
+		String b = "", c = "";
 		for (int row = 0; row < length; row++) {
 			
 			
-			for(int column = length - row; column > 0; column--) {
+			for(int column = length - row -1 ; column >= 0; column--) {
 				System.out.print(" ");
 				
 			}
-			
-			for (int column = 0; column < row+1; column++) {
+			if (count == 0) {
+				for(int i = middleIndex; i<length && i <= length-1 - middleIndex + row; i++) {
+					
+					b = b + (input.charAt(i));
+					
+					if(i == length -1) {
+						count++;
+						c = b;
+					}
+				}
+			}else {
 				
-				if (column == length - 1) {
-					a = (char) (input.charAt(middleIndex) + b );
-					b = input.charAt(middleIndex+1);
-					System.out.print(a);
+				for(int j = 0; j< middleIndex && j<= row - middleIndex - 1; j++) {
+					b = b + input.charAt(j);
 				}
-				else {
-					a = (char) (b + input.charAt(middleIndex));
-					b= input.charAt(count+1);
-					System.out.print(a);
-				}
+				b = c + b;
 			}
+			System.out.print(b);
+			if (row != length -1) {b="";}
 			System.out.print("\n");
+			}
+		
+			
 		}
 
 	}
-
-}
